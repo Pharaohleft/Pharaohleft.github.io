@@ -3,27 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Sales Analysis</title> 
+    <title>E-Commerce Sales Performance - BI Project</title> 
     <style>
         /* STYLING */
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; line-height: 1.6; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; line-height: 1.6; color: #333; }
         .nav-header { max-width: 1200px; margin: 0 auto 20px auto; }
-        .back-button { display: inline-block; padding: 10px 20px; background: #333; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .back-button:hover { background: #555; }
+        .back-button { display: inline-block; padding: 10px 20px; background: #2c3e50; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.2s; }
+        .back-button:hover { background: #34495e; }
         
         /* CONTAINER */
-        .container { max-width: 1280px; margin: 0 auto; background: white; padding: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.05); border-radius: 8px; }
+        .container { max-width: 1280px; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-radius: 8px; }
         
         /* DASHBOARD WINDOW */
-        .iframe-container { position: relative; width: 100%; height: 85vh; margin-bottom: 40px; border: 1px solid #ddd; }
+        .iframe-container { position: relative; width: 100%; height: 85vh; margin-bottom: 50px; border: 1px solid #e1e4e8; border-radius: 4px; overflow: hidden; }
         iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        /* CASE STUDY TEXT */
-        .case-study { max-width: 900px; margin: 0 auto; color: #333; }
-        .case-study h2 { border-bottom: 2px solid #0078d4; padding-bottom: 10px; margin-top: 40px; color: #2c3e50; }
-        .case-study h3 { color: #0078d4; margin-top: 25px; }
-        .case-study ul { margin-bottom: 20px; }
-        .code-block { background: #f4f4f4; padding: 15px; border-left: 4px solid #0078d4; font-family: monospace; font-size: 0.9em; margin: 10px 0; }
+        /* CASE STUDY CONTENT */
+        .case-study { max-width: 900px; margin: 0 auto; }
+        .case-study h1 { color: #2c3e50; margin-bottom: 10px; text-align: center; }
+        .case-study h2 { color: #0078d4; margin-top: 40px; border-bottom: 2px solid #f1f2f6; padding-bottom: 10px; }
+        .case-study h3 { color: #2c3e50; margin-top: 30px; font-size: 1.2em; }
+        .case-study p { margin-bottom: 15px; color: #4a5568; }
+        .case-study ul { margin-bottom: 20px; padding-left: 20px; color: #4a5568; }
+        .case-study li { margin-bottom: 8px; }
+        
+        /* IMAGES */
+        .project-image { width: 100%; max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .caption { font-size: 0.9em; color: #7f8c8d; text-align: center; margin-top: -15px; margin-bottom: 30px; font-style: italic; }
+
+        /* DAX CODE BLOCKS */
+        .dax-section { background: #f4f6f8; padding: 20px; border-radius: 5px; border-left: 4px solid #f39c12; margin-bottom: 20px; }
+        .dax-title { font-weight: bold; color: #d35400; margin-bottom: 5px; display: block; }
+        .code-block { font-family: 'Consolas', monospace; font-size: 0.9em; color: #2c3e50; background: #fff; padding: 10px; border: 1px solid #ddd; border-radius: 3px; overflow-x: auto; margin-top: 5px; }
+
     </style>
 </head>
 <body>
@@ -33,8 +45,12 @@
     </div>
 
     <div class="container">
-        <h1 style="text-align: center; color: #333;">E-Commerce Sales Analysis</h1>
         
+        <div class="case-study" style="margin-bottom: 30px;">
+            <h1>E-Commerce Sales Performance Dashboard</h1>
+            <p style="text-align: center;">Contract BI Project | Profitability & Trend Analysis</p>
+        </div>
+
         <div class="iframe-container">
             <iframe title="E-Commerce Sales" 
                     src="https://app.powerbi.com/view?r=eyJrIjoiYjZkOWNlNjgtNjU4OS00MWExLTg2NDctMjYyNWZmNTkxMjViIiwidCI6IjJjMzI3YWU2LTBkMGItNDI0MS05YmE1LWRkMTgxMzE4NWI0ZiJ9" 
@@ -44,40 +60,72 @@
 
         <div class="case-study">
             
-            <h2>Project Overview</h2>
-            <p><strong>Objective:</strong> To drive profitability by analyzing sales trends, product performance, and customer purchasing behavior.</p>
-            <p><strong>Role:</strong> Power BI Developer</p>
-
-            <h2>Data Processing (ETL)</h2>
-            <p>The dataset consisted of 50,000+ sales records. In Power Query, I:</p>
+            <h2>Project Background</h2>
+            <p>The ecommerce leadership team came to me with sales transaction data and asked for a single Power BI dashboard that would standardize performance reporting. Their challenge wasn’t a lack of data—it was the lack of a repeatable answer system.</p>
+            <p><strong>They needed a system to answer:</strong></p>
             <ul>
-                <li>Split the "Customer Address" column to analyze sales by State and City.</li>
-                <li>Created a "Total Cost" custom column (Quantity * Unit Cost) to calculate profit margins.</li>
-                <li>Filtered out returned orders to ensure accurate revenue reporting.</li>
+                <li>“Are we up or down vs last year?”</li>
+                <li>“Is the issue sales volume, profitability, or both?”</li>
+                <li>“Which customer segment and product categories are driving the change?”</li>
             </ul>
 
-            <h2>Technical Skills (DAX)</h2>
-            <p>Key sales metrics calculated:</p>
+            <h2>Data & Modeling Strategy</h2>
+            <p>The dataset contained 115,746 rows across 39 columns, including Time, Performance, Customer, Product, and Geography fields. A key requirement was a dedicated <strong>Calendar/Date dimension</strong> to support consistent YTD vs PYTD comparisons.</p>
             
-            <h3>1. Profit Margin %</h3>
-            <div class="code-block">
-                Profit Margin % = DIVIDE([Total Profit], [Total Revenue], 0)
+            <img src="ecommerces 2.png" alt="Raw E-Commerce Data" class="project-image">
+            <p class="caption">Snapshot of the raw transaction data.</p>
+
+            <h3>Design Strategy: Metric System First</h3>
+            <p>I built a reusable DAX KPI layer so that “YTD,” “PYTD,” and “YoY” mean the same thing everywhere—regardless of segment, category, or region filters. This prevents common BI failure modes like conflicting definitions or YoY measures breaking under slicers.</p>
+
+            <img src="ecommerces.png" alt="Data Model Schema" class="project-image">
+            <p class="caption">The Star Schema used to connect Transactions to the Calendar and Dimension tables.</p>
+
+            <h2>DAX Logic & Measures</h2>
+            <p>Below are the core DAX measures developed to drive the KPI logic.</p>
+
+            <h3>A) Sales Metrics (YTD / PYTD / YoY)</h3>
+            <div class="dax-section">
+                <span class="dax-title">1. YTD Sales (Current Year)</span>
+                <div class="code-block">TOTALYTD(SUM('Ecommerce Data'[sales_per_order]), 'Calendar Table'[Date])</div>
+                
+                <span class="dax-title" style="margin-top: 15px;">2. PYTD Sales (Prior Year)</span>
+                <div class="code-block">CALCULATE(SUM('Ecommerce Data'[sales_per_order]), DATESYTD(DATEADD('Calendar Table'[Date], -1, YEAR)))</div>
+
+                <span class="dax-title" style="margin-top: 15px;">3. YoY % Change</span>
+                <div class="code-block">([YTD Sales] - [PYTD Sales]) / [PYTD Sales]</div>
             </div>
 
-            <h3>2. Year-over-Year (YoY) Growth</h3>
-            <div class="code-block">
-                YoY Sales = DIVIDE([Total Sales] - [Sales Last Year], [Sales Last Year])
+            <h3>B) Profit Metrics</h3>
+            <div class="dax-section">
+                <span class="dax-title">1. YTD Profit</span>
+                <div class="code-block">TOTALYTD(SUM('Ecommerce Data'[profit_per_order]), 'Calendar Table'[Date])</div>
+                
+                <span class="dax-title" style="margin-top: 15px;">2. YoY Profit Indicator (Dynamic Icon)</span>
+                <div class="code-block">
+VAR positive_icon = UNICHAR(9650)
+VAR negative_icon = UNICHAR(9660)
+RETURN IF([YoY Profit] > 0, positive_icon, negative_icon)
+                </div>
             </div>
 
-            <h3>3. Average Order Value (AOV)</h3>
-            <div class="code-block">
-                AOV = DIVIDE([Total Revenue], DISTINCTCOUNT('Sales'[OrderID]))
+            <h3>C) Profit Margin Metrics</h3>
+            <div class="dax-section">
+                <span class="dax-title">1. Base Profit Margin</span>
+                <div class="code-block">SUM('Ecommerce Data'[profit_per_order]) / SUM('Ecommerce Data'[sales_per_order])</div>
+
+                <span class="dax-title" style="margin-top: 15px;">2. YTD Profit Margin</span>
+                <div class="code-block">TOTALYTD([Profit Margin], 'Calendar Table'[Date])</div>
             </div>
 
-            <h2>Insights</h2>
+            <h2>Business Questions Answered</h2>
+            <p>The dashboard was built to answer specific questions at different levels of the organization:</p>
             <ul>
-                <li><strong>Insight 1:</strong> Electronics have the highest revenue but the lowest profit margin (12%), whereas Accessories have a 45% margin.</li>
-                <li><strong>Insight 2:</strong> Q4 sales account for 40% of annual revenue, driven largely by holiday promotions in November.</li>
+                <li><strong>Executive Performance:</strong> Are YTD Sales, Profit, and Margins improving or deteriorating vs PYTD?</li>
+                <li><strong>Segment Accountability:</strong> Which segment (Consumer / Corporate / Home Office) is driving overall results?</li>
+                <li><strong>Category Drivers:</strong> Is a segment’s performance explained by one category (concentration risk) or broad-based change?</li>
+                <li><strong>Product Concentration:</strong> Which products contribute most to YTD Sales (Top 5)? Which contribute least?</li>
+                <li><strong>Geographic Mix:</strong> Which regions contribute the largest share of YTD Sales, and does the mix shift by segment?</li>
             </ul>
 
         </div>
