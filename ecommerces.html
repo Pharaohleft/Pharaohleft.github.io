@@ -3,53 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Sales Performance - BI Project</title> 
+    <title>E-Commerce Sales Performance - BI Report</title> 
     <style>
-        /* STYLING */
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; line-height: 1.6; color: #333; }
-        .nav-header { max-width: 1200px; margin: 0 auto 20px auto; }
-        .back-button { display: inline-block; padding: 10px 20px; background: #2c3e50; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.2s; }
-        .back-button:hover { background: #34495e; }
+        /* REPORT STYLING */
+        body { font-family: 'Georgia', 'Times New Roman', serif; background-color: #f5f5f5; margin: 0; padding: 40px; line-height: 1.8; color: #333; }
+        .nav-header { max-width: 900px; margin: 0 auto 40px auto; }
+        .back-button { display: inline-block; font-family: 'Segoe UI', Arial, sans-serif; padding: 8px 16px; background: #333; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; }
         
-        /* CONTAINER */
-        .container { max-width: 1280px; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-radius: 8px; }
+        /* PAPER SHEET CONTAINER */
+        .report-container { max-width: 900px; margin: 0 auto; background: white; padding: 60px; box-shadow: 0 0 20px rgba(0,0,0,0.1); border: 1px solid #ddd; }
+        
+        /* TYPOGRAPHY */
+        h1 { font-family: 'Segoe UI', Arial, sans-serif; font-size: 2.2em; color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 20px; margin-bottom: 40px; }
+        h2 { font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.4em; color: #004085; margin-top: 50px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        h3 { font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1em; color: #444; margin-top: 30px; font-weight: bold; }
+        p { margin-bottom: 20px; text-align: justify; }
         
         /* DASHBOARD WINDOW */
-        .iframe-container { position: relative; width: 100%; height: 85vh; margin-bottom: 50px; border: 1px solid #e1e4e8; border-radius: 4px; overflow: hidden; }
-        iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .iframe-container { width: 100%; height: 600px; margin: 40px 0; border: 1px solid #ccc; background: #eee; }
+        iframe { width: 100%; height: 100%; border: none; }
 
-        /* CASE STUDY CONTENT */
-        .case-study { max-width: 900px; margin: 0 auto; }
-        .case-study h1 { color: #2c3e50; margin-bottom: 10px; text-align: center; }
-        .case-study h2 { color: #0078d4; margin-top: 40px; border-bottom: 2px solid #f1f2f6; padding-bottom: 10px; }
-        .case-study h3 { color: #2c3e50; margin-top: 30px; font-size: 1.2em; }
-        .case-study p { margin-bottom: 15px; color: #4a5568; }
-        .case-study ul { margin-bottom: 20px; padding-left: 20px; color: #4a5568; }
-        .case-study li { margin-bottom: 8px; }
-        
         /* IMAGES */
-        .project-image { width: 100%; max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .caption { font-size: 0.9em; color: #7f8c8d; text-align: center; margin-top: -15px; margin-bottom: 30px; font-style: italic; }
+        .figure-container { margin: 40px 0; text-align: center; }
+        .project-image { width: 100%; max-width: 100%; border: 1px solid #ccc; padding: 5px; }
+        .caption { font-size: 0.85em; color: #666; margin-top: 10px; font-style: italic; font-family: 'Segoe UI', Arial, sans-serif; }
 
-        /* DAX CODE BLOCKS */
-        .dax-section { background: #f4f6f8; padding: 20px; border-radius: 5px; border-left: 4px solid #f39c12; margin-bottom: 20px; }
-        .dax-title { font-weight: bold; color: #d35400; margin-bottom: 5px; display: block; }
-        .code-block { font-family: 'Consolas', monospace; font-size: 0.9em; color: #2c3e50; background: #fff; padding: 10px; border: 1px solid #ddd; border-radius: 3px; overflow-x: auto; margin-top: 5px; }
+        /* TECHNICAL BLOCKS */
+        .tech-spec { background: #f9f9f9; padding: 25px; border-left: 5px solid #004085; margin: 20px 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        .code-snippet { font-family: 'Consolas', monospace; font-size: 0.85em; background: #fff; padding: 10px; border: 1px solid #e1e1e1; display: block; margin-top: 10px; color: #d63031; }
 
     </style>
 </head>
 <body>
 
     <div class="nav-header">
-        <a href="index.html" class="back-button">← Back to Portfolio</a>
+        <a href="index.html" class="back-button">Return to Portfolio</a>
     </div>
 
-    <div class="container">
+    <div class="report-container">
         
-        <div class="case-study" style="margin-bottom: 30px;">
-            <h1>E-Commerce Sales Performance Dashboard</h1>
-            <p style="text-align: center;">Contract BI Project | Profitability & Trend Analysis</p>
-        </div>
+        <h1>E-Commerce Sales Performance Report</h1>
+        <p><strong>Role:</strong> Business Intelligence Developer (Contract)<br>
+        <strong>Subject:</strong> Profitability & Trend Analysis Implementation</p>
 
         <div class="iframe-container">
             <iframe title="E-Commerce Sales" 
@@ -58,77 +53,57 @@
             </iframe>
         </div>
 
-        <div class="case-study">
-            
-            <h2>Project Background</h2>
-            <p>The ecommerce leadership team came to me with sales transaction data and asked for a single Power BI dashboard that would standardize performance reporting. Their challenge wasn’t a lack of data—it was the lack of a repeatable answer system.</p>
-            <p><strong>They needed a system to answer:</strong></p>
-            <ul>
-                <li>“Are we up or down vs last year?”</li>
-                <li>“Is the issue sales volume, profitability, or both?”</li>
-                <li>“Which customer segment and product categories are driving the change?”</li>
-            </ul>
+        <h2>1. Executive Summary & Project Context</h2>
+        <p>The ecommerce leadership team commissioned the development of a centralized Power BI dashboard to standardize performance reporting. The primary operational challenge was not a lack of data, but the absence of a repeatable system for answering critical business questions. The organization required a solution to definitively determine if year-to-date performance was trending positively against prior years, isolate whether variances were driven by sales volume or profitability, and identify the specific customer segments driving these results.</p>
+        <p>The finalized solution provides an executive-facing view that maintains consistency across Customer Segments while supporting granular drill-downs into Category, Product, Geography, and Shipping dimensions.</p>
 
-            <h2>Data & Modeling Strategy</h2>
-            <p>The dataset contained 115,746 rows across 39 columns, including Time, Performance, Customer, Product, and Geography fields. A key requirement was a dedicated <strong>Calendar/Date dimension</strong> to support consistent YTD vs PYTD comparisons.</p>
-            
-            <img src="ecommerces 2.png" alt="Raw E-Commerce Data" class="project-image">
-            <p class="caption">Snapshot of the raw transaction data.</p>
+        <h2>2. Data Architecture & Modeling</h2>
+        <p>The analysis is built upon a transactional dataset containing 115,746 rows and 39 columns. Key data points include Order Date, Sales, Profit Per Order, Order Quantity, Customer Segment, and Geography. To support time-intelligence functions, a dedicated Calendar Dimension was modeled and related to the transactional fact table.</p>
 
-            <h3>Design Strategy: Metric System First</h3>
-            <p>I built a reusable DAX KPI layer so that “YTD,” “PYTD,” and “YoY” mean the same thing everywhere—regardless of segment, category, or region filters. This prevents common BI failure modes like conflicting definitions or YoY measures breaking under slicers.</p>
-
-            <img src="ecommerces.png" alt="Data Model Schema" class="project-image">
-            <p class="caption">The Star Schema used to connect Transactions to the Calendar and Dimension tables.</p>
-
-            <h2>DAX Logic & Measures</h2>
-            <p>Below are the core DAX measures developed to drive the KPI logic.</p>
-
-            <h3>A) Sales Metrics (YTD / PYTD / YoY)</h3>
-            <div class="dax-section">
-                <span class="dax-title">1. YTD Sales (Current Year)</span>
-                <div class="code-block">TOTALYTD(SUM('Ecommerce Data'[sales_per_order]), 'Calendar Table'[Date])</div>
-                
-                <span class="dax-title" style="margin-top: 15px;">2. PYTD Sales (Prior Year)</span>
-                <div class="code-block">CALCULATE(SUM('Ecommerce Data'[sales_per_order]), DATESYTD(DATEADD('Calendar Table'[Date], -1, YEAR)))</div>
-
-                <span class="dax-title" style="margin-top: 15px;">3. YoY % Change</span>
-                <div class="code-block">([YTD Sales] - [PYTD Sales]) / [PYTD Sales]</div>
-            </div>
-
-            <h3>B) Profit Metrics</h3>
-            <div class="dax-section">
-                <span class="dax-title">1. YTD Profit</span>
-                <div class="code-block">TOTALYTD(SUM('Ecommerce Data'[profit_per_order]), 'Calendar Table'[Date])</div>
-                
-                <span class="dax-title" style="margin-top: 15px;">2. YoY Profit Indicator (Dynamic Icon)</span>
-                <div class="code-block">
-VAR positive_icon = UNICHAR(9650)
-VAR negative_icon = UNICHAR(9660)
-RETURN IF([YoY Profit] > 0, positive_icon, negative_icon)
-                </div>
-            </div>
-
-            <h3>C) Profit Margin Metrics</h3>
-            <div class="dax-section">
-                <span class="dax-title">1. Base Profit Margin</span>
-                <div class="code-block">SUM('Ecommerce Data'[profit_per_order]) / SUM('Ecommerce Data'[sales_per_order])</div>
-
-                <span class="dax-title" style="margin-top: 15px;">2. YTD Profit Margin</span>
-                <div class="code-block">TOTALYTD([Profit Margin], 'Calendar Table'[Date])</div>
-            </div>
-
-            <h2>Business Questions Answered</h2>
-            <p>The dashboard was built to answer specific questions at different levels of the organization:</p>
-            <ul>
-                <li><strong>Executive Performance:</strong> Are YTD Sales, Profit, and Margins improving or deteriorating vs PYTD?</li>
-                <li><strong>Segment Accountability:</strong> Which segment (Consumer / Corporate / Home Office) is driving overall results?</li>
-                <li><strong>Category Drivers:</strong> Is a segment’s performance explained by one category (concentration risk) or broad-based change?</li>
-                <li><strong>Product Concentration:</strong> Which products contribute most to YTD Sales (Top 5)? Which contribute least?</li>
-                <li><strong>Geographic Mix:</strong> Which regions contribute the largest share of YTD Sales, and does the mix shift by segment?</li>
-            </ul>
-
+        <div class="figure-container">
+            <img src="ecommerces 2.png" alt="Raw Data Table" class="project-image">
+            <div class="caption">Figure 1: Raw transactional data structure prior to modeling.</div>
         </div>
+
+        <p>The schema design prioritizes a "Metric System First" approach. I constructed a reusable DAX KPI layer to ensure that time-based calculations such as Year-to-Date (YTD) and Prior-Year-to-Date (PYTD) remain consistent regardless of the slicer state. This prevents common reporting errors where definitions conflict across different business units.</p>
+
+        <div class="figure-container">
+            <img src="ecommerces.png" alt="Star Schema Model" class="project-image">
+            <div class="caption">Figure 2: Star Schema connecting the Calendar Dimension to Sales Transactions.</div>
+        </div>
+
+        <h2>3. Technical Specifications (DAX)</h2>
+        <p>The following section details the logic used to derive the core performance indicators. These measures were developed to support dynamic time-intelligence comparison.</p>
+
+        <div class="tech-spec">
+            <h3>3.1 Sales Volume Logic</h3>
+            <p>The YTD Sales metric calculates the running total of sales for the current fiscal year. The PYTD Sales metric calculates the same figure for the exact corresponding period in the previous year to ensure a like-for-like comparison.</p>
+            
+            <span class="code-snippet">TOTALYTD(SUM('Ecommerce Data'[sales_per_order]), 'Calendar Table'[Date])</span>
+            <span class="code-snippet">CALCULATE(SUM('Ecommerce Data'[sales_per_order]), DATESYTD(DATEADD('Calendar Table'[Date], -1, YEAR)))</span>
+            <span class="code-snippet">YoY % Change = ([YTD Sales] - [PYTD Sales]) / [PYTD Sales]</span>
+        </div>
+
+        <div class="tech-spec">
+            <h3>3.2 Profitability Indicators</h3>
+            <p>Profit metrics follow the same time-intelligence pattern but include dynamic conditional logic for visualization. An icon generator was implemented to return a specific Unicode character (Up or Down triangle) based on the polarity of the Year-over-Year change.</p>
+            
+            <span class="code-snippet">VAR positive_icon = UNICHAR(9650)</span>
+            <span class="code-snippet">VAR negative_icon = UNICHAR(9660)</span>
+            <span class="code-snippet">RETURN IF([YoY Profit] > 0, positive_icon, negative_icon)</span>
+        </div>
+
+        <div class="tech-spec">
+            <h3>3.3 Margin Analysis</h3>
+            <p>Profit Margin is calculated at the aggregate level to avoid average-of-averages errors. The formula divides total profit by total sales before applying time filters.</p>
+            
+            <span class="code-snippet">SUM('Ecommerce Data'[profit_per_order]) / SUM('Ecommerce Data'[sales_per_order])</span>
+        </div>
+
+        <h2>4. Analytical Scope & Capabilities</h2>
+        <p>The dashboard architecture was designed to answer specific strategic questions without requiring manual data manipulation. It enables Executive Leadership to assess whether sales, profit, and margins are improving or deteriorating relative to the prior year. It allows Segment Managers to determine which customer types (Consumer, Corporate, or Home Office) are accountable for overall results. Furthermore, it empowers Category Managers to identify concentration risks where a single product category may be masking broader performance issues.</p>
+        <p>This implementation successfully transitioned the client from static, ad-hoc reporting to a dynamic decision-support system.</p>
+
     </div>
 
 </body>
