@@ -28,7 +28,9 @@
         .project-image { width: 100%; max-width: 100%; border: 1px solid #ccc; padding: 5px; }
         .caption { font-size: 0.85em; color: #666; margin-top: 10px; font-style: italic; font-family: 'Segoe UI', Arial, sans-serif; }
 
-        /* TECHNICAL BLOCKS */
+        /* LISTS & TECHNICAL BLOCKS */
+        ul { margin-bottom: 20px; }
+        li { margin-bottom: 10px; }
         .tech-spec { background: #f9f9f9; padding: 25px; border-left: 5px solid #004085; margin: 20px 0; font-family: 'Segoe UI', Arial, sans-serif; }
         .code-snippet { font-family: 'Consolas', monospace; font-size: 0.85em; background: #fff; padding: 10px; border: 1px solid #e1e1e1; display: block; margin-top: 10px; color: #d63031; }
 
@@ -43,7 +45,7 @@
     <div class="report-container">
         
         <h1>E-Commerce Sales Performance Report</h1>
-        <p><strong>Role:</strong> Business Intelligence Developer (Contract)<br>
+        <p><strong>Role:</strong> Business Intelligence Developer<br>
         <strong>Subject:</strong> Profitability & Trend Analysis Implementation</p>
 
         <div class="iframe-container">
@@ -53,56 +55,72 @@
             </iframe>
         </div>
 
-        <h2>1. Executive Summary & Project Context</h2>
-        <p>The ecommerce leadership team commissioned the development of a centralized Power BI dashboard to standardize performance reporting. The primary operational challenge was not a lack of data, but the absence of a repeatable system for answering critical business questions. The organization required a solution to definitively determine if year-to-date performance was trending positively against prior years, isolate whether variances were driven by sales volume or profitability, and identify the specific customer segments driving these results.</p>
-        <p>The finalized solution provides an executive-facing view that maintains consistency across Customer Segments while supporting granular drill-downs into Category, Product, Geography, and Shipping dimensions.</p>
+        <h2>1. Business Objectives & Key Questions</h2>
+        <p>The ecommerce leadership team commissioned this project to address a lack of repeatable performance reporting. The primary challenge was not the absence of data, but the inability to answer strategic questions quickly and consistently.</p>
+        
+        <p><strong>The dashboard was required to answer the following specific business questions:</strong></p>
+        
+        <h3>Executive Performance Questions</h3>
+        <ul>
+            <li>Are Year-to-Date (YTD) Sales up or down compared to the prior year?</li>
+            <li>Are YTD Profit and Profit Margins improving or deteriorating?</li>
+            <li>Is the performance change driven by Quantity (demand) or Profit Margin (efficiency)?</li>
+        </ul>
 
-        <h2>2. Data Architecture & Modeling</h2>
-        <p>The analysis is built upon a transactional dataset containing 115,746 rows and 39 columns. Key data points include Order Date, Sales, Profit Per Order, Order Quantity, Customer Segment, and Geography. To support time-intelligence functions, a dedicated Calendar Dimension was modeled and related to the transactional fact table.</p>
+        <h3>Segment & Category Questions</h3>
+        <ul>
+            <li>Which customer segment (Consumer, Corporate, or Home Office) is driving overall results?</li>
+            <li>Which product categories are growing or declining Year-over-Year within each segment?</li>
+            <li>Is performance explained by one category (concentration risk) or broad-based change?</li>
+        </ul>
 
-        <div class="figure-container">
-            <img src="ecommerces 2.png" alt="Raw Data Table" class="project-image">
-            <div class="caption">Figure 1: Raw transactional data structure prior to modeling.</div>
-        </div>
+        <h3>Operational Questions</h3>
+        <ul>
+            <li>Which products contribute the most to sales (Top 5), and which contribute the least?</li>
+            <li>Which regions contribute the largest share of sales, and does the mix shift by segment?</li>
+        </ul>
 
-        <p>The schema design prioritizes a "Metric System First" approach. I constructed a reusable DAX KPI layer to ensure that time-based calculations such as Year-to-Date (YTD) and Prior-Year-to-Date (PYTD) remain consistent regardless of the slicer state. This prevents common reporting errors where definitions conflict across different business units.</p>
+        <h3>2.1 Data Architecture</h3>
+        <p>The solution was built on a transactional dataset of 115,746 rows. I transformed the raw data into a Star Schema, creating a dedicated Calendar Dimension to support time-intelligence functions.</p>
 
         <div class="figure-container">
             <img src="ecommerces.png" alt="Star Schema Model" class="project-image">
-            <div class="caption">Figure 2: Star Schema connecting the Calendar Dimension to Sales Transactions.</div>
+            <div class="caption">Figure 1: The Star Schema Model connecting Transactions to Dimensions.</div>
         </div>
 
-        <h2>3. Technical Specifications (DAX)</h2>
-        <p>The following section details the logic used to derive the core performance indicators. These measures were developed to support dynamic time-intelligence comparison.</p>
+        <h3>2.2 Metric System Development (DAX)</h3>
+        <p>I implemented a reusable DAX layer to standardize how performance is calculated. Below are the key technical specifications used to drive the insights:</p>
 
         <div class="tech-spec">
-            <h3>3.1 Sales Volume Logic</h3>
-            <p>The YTD Sales metric calculates the running total of sales for the current fiscal year. The PYTD Sales metric calculates the same figure for the exact corresponding period in the previous year to ensure a like-for-like comparison.</p>
-            
+            <strong>Sales Volume Logic:</strong><br>
+            Calculated running totals for the current year and the prior year to derive the YoY% change.
             <span class="code-snippet">TOTALYTD(SUM('Ecommerce Data'[sales_per_order]), 'Calendar Table'[Date])</span>
-            <span class="code-snippet">CALCULATE(SUM('Ecommerce Data'[sales_per_order]), DATESYTD(DATEADD('Calendar Table'[Date], -1, YEAR)))</span>
-            <span class="code-snippet">YoY % Change = ([YTD Sales] - [PYTD Sales]) / [PYTD Sales]</span>
+            <span class="code-snippet">([YTD Sales] - [PYTD Sales]) / [PYTD Sales]</span>
         </div>
 
         <div class="tech-spec">
-            <h3>3.2 Profitability Indicators</h3>
-            <p>Profit metrics follow the same time-intelligence pattern but include dynamic conditional logic for visualization. An icon generator was implemented to return a specific Unicode character (Up or Down triangle) based on the polarity of the Year-over-Year change.</p>
-            
-            <span class="code-snippet">VAR positive_icon = UNICHAR(9650)</span>
-            <span class="code-snippet">VAR negative_icon = UNICHAR(9660)</span>
-            <span class="code-snippet">RETURN IF([YoY Profit] > 0, positive_icon, negative_icon)</span>
+            <strong>Profitability Logic:</strong><br>
+            Implemented dynamic conditional logic to visualize trends using icons (Up/Down triangles) based on performance polarity.
+            <span class="code-snippet">
+VAR positive_icon = UNICHAR(9650)
+VAR negative_icon = UNICHAR(9660)
+RETURN IF([YoY Profit] > 0, positive_icon, negative_icon)
+            </span>
         </div>
 
         <div class="tech-spec">
-            <h3>3.3 Margin Analysis</h3>
-            <p>Profit Margin is calculated at the aggregate level to avoid average-of-averages errors. The formula divides total profit by total sales before applying time filters.</p>
-            
+            <strong>Margin Analysis:</strong><br>
+            Calculated margin at the aggregate level to avoid average-of-averages errors.
             <span class="code-snippet">SUM('Ecommerce Data'[profit_per_order]) / SUM('Ecommerce Data'[sales_per_order])</span>
         </div>
 
-        <h2>4. Analytical Scope & Capabilities</h2>
-        <p>The dashboard architecture was designed to answer specific strategic questions without requiring manual data manipulation. It enables Executive Leadership to assess whether sales, profit, and margins are improving or deteriorating relative to the prior year. It allows Segment Managers to determine which customer types (Consumer, Corporate, or Home Office) are accountable for overall results. Furthermore, it empowers Category Managers to identify concentration risks where a single product category may be masking broader performance issues.</p>
-        <p>This implementation successfully transitioned the client from static, ad-hoc reporting to a dynamic decision-support system.</p>
+        <h3>2.3 Visual Layer Architecture</h3>
+        <p>The visual design was mapped directly to the business questions:</p>
+        <ul>
+            <li><strong>KPI Row:</strong> Answers "Are we up or down?" using the DAX time-intelligence logic.</li>
+            <li><strong>Category Table:</strong> Answers "What is driving the change?" by isolating specific category performance.</li>
+            <li><strong>Top/Bottom Lists:</strong> Answers "Where is the concentration risk?" by highlighting the highest and lowest performing products.</li>
+        </ul>
 
     </div>
 
