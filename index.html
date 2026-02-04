@@ -3,137 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Austin Abraham | Data Analyst</title>
     <style>
         /* BASE STYLES */
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 40px; text-align: center; }
-        h1 { color: #2c3e50; margin-bottom: 5px; }
-        p.subtitle { color: #7f8c8d; margin-bottom: 40px; font-size: 1.1em; }
-        
-        /* GRID SYSTEM */
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #f8f9fa; 
+            color: #333;
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.6;
+        }
+
+        /* HERO SECTION (Top Info) */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .hero .job-title {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero .contact-info {
+            color: #95a5a6;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .hero p.bio {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+        }
+
+        /* ACTION BUTTON */
+        .cta-button {
+            background-color: #000;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px; /* Pill shape */
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            background-color: #333;
+        }
+
+        /* PROJECT GRID */
+        .gallery-container {
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            max-width: 1100px;
-            margin: 0 auto;
+            gap: 30px;
         }
 
         /* CARD DESIGN */
         .card {
             background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             text-align: left;
-            border-top: 5px solid #0078d4; /* Power BI Blue Accent */
+            border-top: 5px solid #0078d4; /* Blue Accent */
         }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.1); }
+
+        .card:hover { 
+            transform: translateY(-7px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+        }
         
         .card h3 { margin-top: 0; color: #2c3e50; font-size: 1.4em; } 
-        .card p { font-size: 0.95em; color: #666; line-height: 1.5; margin-bottom: 20px; }
+        .card p { font-size: 0.95em; color: #666; margin-bottom: 25px; }
         
-        /* BUTTONS */
-        .btn {
+        /* CARD BUTTONS */
+        .btn-card {
             display: block;
             text-align: center;
-            padding: 12px 0;
+            padding: 10px 0;
             background-color: #f1f2f6;
             color: #2c3e50;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 600;
-            transition: background 0.2s;
+            transition: background 0.2s, color 0.2s;
         }
-        .btn:hover { background-color: #0078d4; color: white; }
+        .btn-card:hover { background-color: #0078d4; color: white; }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #fff;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer img {
+            transition: transform 0.2s;
+        }
+
+        .footer img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer p {
+            margin-top: 20px;
+            color: #777;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Portfolio</h1>
-    <p class="subtitle">Business Intelligence Analyst</p>
-    <p class="subtitle">305-645-4633</p>
-    <section style="text-align: center; padding: 50px 20px; max-width: 800px; margin: 0 auto;">
-    
-    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">
-        Hi there, I am Austin 👋
-    </h1>
+    <header class="hero">
+        <h1>Hi there, I am Austin 👋</h1>
+        <div class="job-title">Business Intelligence Analyst</div>
+        <div class="contact-info">Chicago, IL • 305-645-4633</div>
 
-    <p style="font-size: 1.1rem; line-height: 1.6; color: #555;">
-        I am interested in <b>all things data</b>. I am currently working as a 
-        Volunteer Data Analyst and located in <b>Chicago, IL</b> .
-    </p>
+        <p class="bio">
+            I am interested in <b>all things data</b>. I currently work as a 
+            Volunteer Data Analyst.
+        </p>
 
-    <p style="font-size: 1rem; line-height: 1.6; color: #666; margin-bottom: 30px;">
-        In my free time, I like to read, hike, play basketball, and explore different 
-        music genres every morning (In no particular order).
-    </p>
+        <p class="bio" style="font-size: 1rem; color: #777;">
+            In my free time, I like to read, hike, play basketball, and explore different 
+            music genres every morning (In no particular order).
+        </p>
 
-    <a href="#projects" style="
-        background-color: #000; 
-        color: #fff; 
-        padding: 12px 24px; 
-        text-decoration: none; 
-        border-radius: 5px; 
-        font-weight: bold;
-        display: inline-block;">
-        Check out my projects 
-    </a>
+        <a href="#projects" class="cta-button">
+            Check out my projects 🚀
+        </a>
+    </header>
 
-</section>
-    <div class="gallery">
-        
-        <div class="card">
-            <h3>Bank Loan Analysis</h3>
-            <p>Risk assessment dashboard tracking approval rates, default patterns, and applicant demographics.</p>
-            <a href="loan.html" class="btn">View Project</a>
+    <div class="gallery-container">
+        <div id="projects" class="gallery">
+            
+            <div class="card">
+                <h3>Bank Loan Analysis</h3>
+                <p>Risk assessment dashboard tracking approval rates, default patterns, and applicant demographics.</p>
+                <a href="loan.html" class="btn-card">View Project</a>
+            </div>
+
+            <div class="card">
+                <h3>Meta Ads Performance</h3>
+                <p>Marketing analytics dashboard tracking CPA, CTR, and campaign ROI across Regions & Campaigns.</p>
+                <a href="meta.html" class="btn-card">View Project</a>
+            </div>
+
+            <div class="card">
+                <h3>Healthcare Metrics</h3>
+                <p>Patient wait time analysis, resource utilization, and operational efficiency tracking.</p>
+                <a href="healthcare.html" class="btn-card">View Project</a>
+            </div>
+
+            <div class="card">
+                <h3>E-Commerce Sales</h3>
+                <p>Revenue breakdown by product category and profit margins.</p>
+                <a href="ecommerces.html" class="btn-card">View Project</a>
+            </div>
+
         </div>
-
-        <div class="card">
-            <h3>Meta Ads Performance</h3>
-            <p>Marketing analytics dashboard tracking CPA, CTR, and campaign ROI across Regions & Campaigns.</p>
-            <a href="meta.html" class="btn">View Project</a>
-        </div>
-
-        <div class="card">
-            <h3>Healthcare Metrics</h3>
-            <p>Patient wait time analysis, resource utilization, and operational efficiency tracking.</p>
-            <a href="healthcare.html" class="btn">View Project</a>
-        </div>
-
-        <div class="card">
-            <h3>E-Commerce Sales</h3>
-            <p>Revenue breakdown by product category and profit margins.</p>
-            <a href="ecommerces.html" class="btn">View Project</a>
-        </div>
-
     </div>
-    <br>
-    <div align="center">
 
-  <a href="mailto:austinabraham49@icloud.com">
-    <img src="https://img.icons8.com/ios-filled/50/000000/mail.png" height="40" alt="Email" style="margin: 0 10px;" />
-  </a>
+    <footer class="footer">
+        <a href="mailto:austinabraham49@icloud.com">
+            <img src="https://img.icons8.com/ios-filled/50/000000/mail.png" height="40" alt="Email" style="margin: 0 10px;" />
+        </a>
 
-  <a href="https://github.com/Pharaohleft">
-    <img src="https://img.icons8.com/ios-filled/50/000000/github.png" height="40" alt="GitHub" style="margin: 0 10px;" />
-  </a>
+        <a href="https://github.com/Pharaohleft">
+            <img src="https://img.icons8.com/ios-filled/50/000000/github.png" height="40" alt="GitHub" style="margin: 0 10px;" />
+        </a>
 
-  <a href="https://www.linkedin.com/in/austinabrahamm/">
-    <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" height="40" alt="LinkedIn" style="margin: 0 10px;" />
-  </a>
+        <a href="https://www.linkedin.com/in/austinabrahamm/">
+            <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" height="40" alt="LinkedIn" style="margin: 0 10px;" />
+        </a>
 
-  <a href="https://www.instagram.com/boothepharaoh/">
-    <img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" height="40" alt="Instagram" style="margin: 0 10px;" />
-  </a>
+        <a href="https://www.instagram.com/boothepharaoh/">
+            <img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" height="40" alt="Instagram" style="margin: 0 10px;" />
+        </a>
 
-  <p>The best way to contact me is through email.</p>
-
-</div>
+        <p>The best way to contact me is through email.</p>
+    </footer>
 
 </body>
 </html>
