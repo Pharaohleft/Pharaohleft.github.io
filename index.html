@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharaohleft's Portfolio</title>
+    <style>
+        /* BASE STYLES */
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 40px; text-align: center; }
+        h1 { color: #2c3e50; margin-bottom: 5px; }
+        p.subtitle { color: #7f8c8d; margin-bottom: 40px; font-size: 1.1em; }
+        
+        /* GRID SYSTEM */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* CARD DESIGN */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+            border-top: 5px solid #0078d4; /* Power BI Blue Accent */
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.1); }
+        
+        .card h3 { margin-top: 0; color: #2c3e50; font-size: 1.4em; } 
+        .card p { font-size: 0.95em; color: #666; line-height: 1.5; margin-bottom: 20px; }
+        
+        /* BUTTONS */
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 12px 0;
+            background-color: #f1f2f6;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn:hover { background-color: #0078d4; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>Pharaohleft's Data Portfolio</h1>
+    <p class="subtitle">Power BI Developer | Data Analyst</p>
+
+    <div class="gallery">
+        
+        <div class="card">
+            <h3>Bank Loan Analysis</h3>
+            <p>Risk assessment dashboard tracking approval rates, default patterns, and applicant demographics.</p>
+            <a href="loan.html" class="btn">View Project</a>
+        </div>
+
+        <div class="card">
+            <h3>Insurance Claims</h3>
+            <p>Analysis of claim frequency, payout ratios, and customer policy trends.</p>
+            <a href="insurance.html" class="btn">View Project</a>
+        </div>
+
+        <div class="card">
+            <h3>Meta Ads Performance</h3>
+            <p>Marketing analytics dashboard tracking CPA, CTR, and campaign ROI across regions.</p>
+            <a href="meta.html" class="btn">View Project</a>
+        </div>
+
+        <div class="card">
+            <h3>Healthcare Metrics</h3>
+            <p>Patient wait time analysis, resource utilization, and operational efficiency tracking.</p>
+            <a href="healthcare.html" class="btn">View Project</a>
+        </div>
+
+        <div class="card">
+            <h3>E-Commerce Sales</h3>
+            <p>Revenue breakdown by product category, customer churn analysis, and profit margins.</p>
+            <a href="ecommerce.html" class="btn">View Project</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
