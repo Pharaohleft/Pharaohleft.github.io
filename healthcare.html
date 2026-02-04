@@ -3,27 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare Metrics</title> 
+    <title>Healthcare ER Performance - Business Intelligence</title> 
     <style>
         /* STYLING */
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; line-height: 1.6; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; line-height: 1.6; color: #333; }
         .nav-header { max-width: 1200px; margin: 0 auto 20px auto; }
-        .back-button { display: inline-block; padding: 10px 20px; background: #333; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .back-button:hover { background: #555; }
+        .back-button { display: inline-block; padding: 10px 20px; background: #2c3e50; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.2s; }
+        .back-button:hover { background: #34495e; }
         
         /* CONTAINER */
-        .container { max-width: 1280px; margin: 0 auto; background: white; padding: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.05); border-radius: 8px; }
+        .container { max-width: 1280px; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-radius: 8px; }
         
         /* DASHBOARD WINDOW */
-        .iframe-container { position: relative; width: 100%; height: 85vh; margin-bottom: 40px; border: 1px solid #ddd; }
+        .iframe-container { position: relative; width: 100%; height: 85vh; margin-bottom: 50px; border: 1px solid #e1e4e8; border-radius: 4px; overflow: hidden; }
         iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        /* CASE STUDY TEXT */
-        .case-study { max-width: 900px; margin: 0 auto; color: #333; }
-        .case-study h2 { border-bottom: 2px solid #0078d4; padding-bottom: 10px; margin-top: 40px; color: #2c3e50; }
-        .case-study h3 { color: #0078d4; margin-top: 25px; }
-        .case-study ul { margin-bottom: 20px; }
-        .code-block { background: #f4f4f4; padding: 15px; border-left: 4px solid #0078d4; font-family: monospace; font-size: 0.9em; margin: 10px 0; }
+        /* CASE STUDY CONTENT */
+        .case-study { max-width: 900px; margin: 0 auto; }
+        .case-study h1 { color: #2c3e50; margin-bottom: 10px; text-align: center; }
+        .case-study h2 { color: #0078d4; margin-top: 40px; border-bottom: 2px solid #f1f2f6; padding-bottom: 10px; }
+        .case-study h3 { color: #2c3e50; margin-top: 30px; font-size: 1.2em; }
+        .case-study p { margin-bottom: 15px; color: #4a5568; }
+        .case-study ul { margin-bottom: 20px; padding-left: 20px; color: #4a5568; }
+        .case-study li { margin-bottom: 8px; }
+        
+        /* IMAGES */
+        .project-image { width: 100%; max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .caption { font-size: 0.9em; color: #7f8c8d; text-align: center; margin-top: -15px; margin-bottom: 30px; font-style: italic; }
+
+        /* KPI CARD STYLING */
+        .kpi-card { background: #f9f9f9; padding: 20px; border-left: 4px solid #2ecc71; margin-bottom: 20px; border-radius: 0 4px 4px 0; }
+        .kpi-title { font-weight: bold; color: #2c3e50; display: block; margin-bottom: 5px; }
+        .kpi-purpose { font-size: 0.95em; color: #555; margin-bottom: 10px; }
+        .kpi-dax { font-size: 0.9em; color: #0078d4; font-family: monospace; background: #eee; padding: 2px 5px; border-radius: 3px; }
+
     </style>
 </head>
 <body>
@@ -33,8 +46,12 @@
     </div>
 
     <div class="container">
-        <h1 style="text-align: center; color: #333;">Healthcare Metrics Analysis</h1>
         
+        <div class="case-study" style="margin-bottom: 30px;">
+            <h1>Healthcare ER Performance Dashboard</h1>
+            <p style="text-align: center;">Business Intelligence Contract | Operations & Compliance Analytics</p>
+        </div>
+
         <div class="iframe-container">
             <iframe title="Healthcare Dashboard" 
                     src="https://app.powerbi.com/view?r=eyJrIjoiZmVkMThjYWEtY2U3OS00NTRiLWIzNTItOWI2NmMyNjE5YzZmIiwidCI6IjJjMzI3YWU2LTBkMGItNDI0MS05YmE1LWRkMTgxMzE4NWI0ZiJ9" 
@@ -44,35 +61,62 @@
 
         <div class="case-study">
             
-            <h2>Project Overview</h2>
-            <p><strong>Objective:</strong> To monitor hospital operational efficiency, tracking patient wait times and resource utilization.</p>
-            <p><strong>Role:</strong> Power BI Developer</p>
+            <h2>Project Context</h2>
+            <p>The hospital engaged me on a Business Intelligence contract to build an Emergency Room performance dashboard that would allow leadership to monitor access, throughput, admissions, referrals, and patient experience across time.</p>
+            <p><strong>Primary Requirement:</strong> Design robust, reusable KPIs using DAX that remain accurate under different time filters (monthly vs. consolidated views) without data duplication.</p>
 
-            <h2>Data Processing (ETL)</h2>
-            <p>The dataset included patient admission records and staffing logs. In Power Query, I:</p>
+            <h3>Business Questions Answered</h3>
             <ul>
-                <li>Calculated "Wait Time" by subtracting arrival time from consultation time.</li>
-                <li>Grouped data by department to identify bottlenecks.</li>
-                <li>Cleaned inconsistent entries in the "Doctor Specialty" column.</li>
+                <li>How many patients are being treated over time, and how does volume change month to month?</li>
+                <li>What is the average patient wait time, and does it remain within acceptable thresholds?</li>
+                <li>What share of patients are being referred to other departments?</li>
+                <li>How effectively is the Emergency Room meeting its 30-minute access target?</li>
             </ul>
 
-            <h2>Technical Skills (DAX)</h2>
-            <p>Key metrics calculated:</p>
+            <h2>Data & Schema Design</h2>
+            <p>The hospital provided a structured dataset containing patient-level Emergency Room records. I structured this into a clean model to support the required questions.</p>
             
-            <h3>1. Average Wait Time</h3>
-            <div class="code-block">
-                Avg Wait Time = AVERAGE('Visits'[WaitTimeMinutes])
+            <img src="healthcare 2.png" alt="Patient Data Structure" class="project-image">
+            <p class="caption">Snapshot of the patient-level ER records.</p>
+
+            <p>To ensure performance comparisons remained accurate without manual recalculation, I utilized a star schema approach with dedicated measure tables.</p>
+
+            <img src="healthcare.png" alt="Healthcare Star Schema" class="project-image">
+            <p class="caption">The Data Model designed for filter-safe calculations.</p>
+
+            <h2>KPI Design & DAX Logic</h2>
+            <p>The core value of this project was the translation of operational requirements into DAX logic.</p>
+
+            <div class="kpi-card">
+                <span class="kpi-title">1. Total Patient Volume</span>
+                <div class="kpi-purpose"><strong>Purpose:</strong> Establish baseline demand to track load over time and normalize other KPIs.</div>
+                <div class="kpi-purpose"><strong>Approach:</strong> Distinct count of patient identifiers to prevent double-counting across dimensions.</div>
             </div>
 
-            <h3>2. Patient Satisfaction Score (NPS)</h3>
-            <div class="code-block">
-                NPS = (CALCULATE(COUNTROWS('Surveys'), 'Surveys'[Score] >= 9) - CALCULATE(COUNTROWS('Surveys'), 'Surveys'[Score] <= 6)) / COUNTROWS('Surveys') * 100
+            <div class="kpi-card">
+                <span class="kpi-title">2. Average Wait Time</span>
+                <div class="kpi-purpose"><strong>Purpose:</strong> Monitor access efficiency and identify periods of operational strain.</div>
+                <div class="kpi-purpose"><strong>Approach:</strong> Calculated as a true average (minutes), separated from threshold logic to allow independent trend analysis.</div>
             </div>
 
-            <h2>Insights & Impact</h2>
+            <div class="kpi-card">
+                <span class="kpi-title">3. Referral Rate</span>
+                <div class="kpi-purpose"><strong>Purpose:</strong> Understand downstream care demand and ER dependency on other departments.</div>
+                <div class="kpi-purpose"><strong>Approach:</strong> Filter-aware conditional row counts to reflect true referral behavior by period.</div>
+            </div>
+
+            <div class="kpi-card" style="border-left-color: #e74c3c;">
+                <span class="kpi-title">4. Wait Time Status (Compliance Target)</span>
+                <div class="kpi-purpose"><strong>Purpose:</strong> The hospital explicitly requested visibility into 30-minute access compliance.</div>
+                <div class="kpi-purpose"><strong>Approach:</strong> Conditional logic to classify patients as "Within Target" vs "Missed Target." This revealed failure rates that average wait times often hid.</div>
+            </div>
+
+            <h2>Outcome & Impact</h2>
+            <p>The final dashboard provided hospital stakeholders with a reliable, filter-safe KPI foundation. By moving beyond static reporting to decision-grade analytics, leadership gained:</p>
             <ul>
-                <li><strong>Insight 1:</strong> The Emergency Department has the highest average wait time (45 mins) during weekends.</li>
-                <li><strong>Insight 2:</strong> Patient satisfaction drops by 20% when wait times exceed 30 minutes.</li>
+                <li>Clear visibility into Emergency Room access and throughput performance.</li>
+                <li>The ability to compare month-level behavior against consolidated averages to spot volatility.</li>
+                <li>A BI asset suitable for ongoing operational monitoring and executive review.</li>
             </ul>
 
         </div>
