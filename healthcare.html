@@ -3,123 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare ER Performance - Business Intelligence</title> 
+    <title>E-Commerce Sales Performance - BI Report</title> 
     <style>
-        /* STYLING */
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; line-height: 1.6; color: #333; }
-        .nav-header { max-width: 1200px; margin: 0 auto 20px auto; }
-        .back-button { display: inline-block; padding: 10px 20px; background: #2c3e50; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.2s; }
-        .back-button:hover { background: #34495e; }
+        /* REPORT STYLING */
+        body { font-family: 'Georgia', 'Times New Roman', serif; background-color: #f5f5f5; margin: 0; padding: 40px; line-height: 1.8; color: #333; }
+        .nav-header { max-width: 900px; margin: 0 auto 40px auto; }
+        .back-button { display: inline-block; font-family: 'Segoe UI', Arial, sans-serif; padding: 8px 16px; background: #333; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; }
         
-        /* CONTAINER */
-        .container { max-width: 1280px; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-radius: 8px; }
+        /* PAPER SHEET CONTAINER */
+        .report-container { max-width: 900px; margin: 0 auto; background: white; padding: 60px; box-shadow: 0 0 20px rgba(0,0,0,0.1); border: 1px solid #ddd; }
+        
+        /* TYPOGRAPHY */
+        h1 { font-family: 'Segoe UI', Arial, sans-serif; font-size: 2.2em; color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 20px; margin-bottom: 40px; }
+        h2 { font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.4em; color: #004085; margin-top: 50px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        h3 { font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1em; color: #444; margin-top: 30px; font-weight: bold; }
+        p { margin-bottom: 20px; text-align: justify; }
         
         /* DASHBOARD WINDOW */
-        .iframe-container { position: relative; width: 100%; height: 85vh; margin-bottom: 50px; border: 1px solid #e1e4e8; border-radius: 4px; overflow: hidden; }
-        iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .iframe-container { width: 100%; height: 600px; margin: 40px 0; border: 1px solid #ccc; background: #eee; }
+        iframe { width: 100%; height: 100%; border: none; }
 
-        /* CASE STUDY CONTENT */
-        .case-study { max-width: 900px; margin: 0 auto; }
-        .case-study h1 { color: #2c3e50; margin-bottom: 10px; text-align: center; }
-        .case-study h2 { color: #0078d4; margin-top: 40px; border-bottom: 2px solid #f1f2f6; padding-bottom: 10px; }
-        .case-study h3 { color: #2c3e50; margin-top: 30px; font-size: 1.2em; }
-        .case-study p { margin-bottom: 15px; color: #4a5568; }
-        .case-study ul { margin-bottom: 20px; padding-left: 20px; color: #4a5568; }
-        .case-study li { margin-bottom: 8px; }
-        
         /* IMAGES */
-        .project-image { width: 100%; max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .caption { font-size: 0.9em; color: #7f8c8d; text-align: center; margin-top: -15px; margin-bottom: 30px; font-style: italic; }
+        .figure-container { margin: 40px 0; text-align: center; }
+        .project-image { width: 100%; max-width: 100%; border: 1px solid #ccc; padding: 5px; }
+        .caption { font-size: 0.85em; color: #666; margin-top: 10px; font-style: italic; font-family: 'Segoe UI', Arial, sans-serif; }
 
-        /* KPI CARD STYLING */
-        .kpi-card { background: #f9f9f9; padding: 20px; border-left: 4px solid #2ecc71; margin-bottom: 20px; border-radius: 0 4px 4px 0; }
-        .kpi-title { font-weight: bold; color: #2c3e50; display: block; margin-bottom: 5px; }
-        .kpi-purpose { font-size: 0.95em; color: #555; margin-bottom: 10px; }
-        .kpi-dax { font-size: 0.9em; color: #0078d4; font-family: monospace; background: #eee; padding: 2px 5px; border-radius: 3px; }
+        /* TECHNICAL BLOCKS */
+        .tech-spec { background: #f9f9f9; padding: 25px; border-left: 5px solid #004085; margin: 20px 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        .code-snippet { font-family: 'Consolas', monospace; font-size: 0.85em; background: #fff; padding: 10px; border: 1px solid #e1e1e1; display: block; margin-top: 10px; color: #d63031; }
 
     </style>
 </head>
 <body>
 
     <div class="nav-header">
-        <a href="index.html" class="back-button">← Back to Portfolio</a>
+        <a href="index.html" class="back-button">Return to Portfolio</a>
     </div>
 
-    <div class="container">
+    <div class="report-container">
         
-        <div class="case-study" style="margin-bottom: 30px;">
-            <h1>Healthcare ER Performance Dashboard</h1>
-            <p style="text-align: center;">Business Intelligence Contract | Operations & Compliance Analytics</p>
-        </div>
+        <h1>E-Commerce Sales Performance Report</h1>
+        <p><strong>Role:</strong> Business Intelligence Developer (Contract)<br>
+        <strong>Subject:</strong> Profitability & Trend Analysis Implementation</p>
 
         <div class="iframe-container">
-            <iframe title="Healthcare Dashboard" 
-                    src="https://app.powerbi.com/view?r=eyJrIjoiZmVkMThjYWEtY2U3OS00NTRiLWIzNTItOWI2NmMyNjE5YzZmIiwidCI6IjJjMzI3YWU2LTBkMGItNDI0MS05YmE1LWRkMTgxMzE4NWI0ZiJ9" 
+            <iframe title="E-Commerce Sales" 
+                    src="https://app.powerbi.com/view?r=eyJrIjoiYjZkOWNlNjgtNjU4OS00MWExLTg2NDctMjYyNWZmNTkxMjViIiwidCI6IjJjMzI3YWU2LTBkMGItNDI0MS05YmE1LWRkMTgxMzE4NWI0ZiJ9" 
                     allowFullScreen="true">
             </iframe>
         </div>
 
-        <div class="case-study">
-            
-            <h2>Project Context</h2>
-            <p>The hospital engaged me on a Business Intelligence contract to build an Emergency Room performance dashboard that would allow leadership to monitor access, throughput, admissions, referrals, and patient experience across time.</p>
-            <p><strong>Primary Requirement:</strong> Design robust, reusable KPIs using DAX that remain accurate under different time filters (monthly vs. consolidated views) without data duplication.</p>
+        <h2>1. Executive Summary & Project Context</h2>
+        <p>The ecommerce leadership team commissioned the development of a centralized Power BI dashboard to standardize performance reporting. The primary operational challenge was not a lack of data, but the absence of a repeatable system for answering critical business questions. The organization required a solution to definitively determine if year-to-date performance was trending positively against prior years, isolate whether variances were driven by sales volume or profitability, and identify the specific customer segments driving these results.</p>
+        <p>The finalized solution provides an executive-facing view that maintains consistency across Customer Segments while supporting granular drill-downs into Category, Product, Geography, and Shipping dimensions.</p>
 
-            <h3>Business Questions Answered</h3>
-            <ul>
-                <li>How many patients are being treated over time, and how does volume change month to month?</li>
-                <li>What is the average patient wait time, and does it remain within acceptable thresholds?</li>
-                <li>What share of patients are being referred to other departments?</li>
-                <li>How effectively is the Emergency Room meeting its 30-minute access target?</li>
-            </ul>
+        <h2>2. Data Architecture & Modeling</h2>
+        <p>The analysis is built upon a transactional dataset containing 115,746 rows and 39 columns. Key data points include Order Date, Sales, Profit Per Order, Order Quantity, Customer Segment, and Geography. To support time-intelligence functions, a dedicated Calendar Dimension was modeled and related to the transactional fact table.</p>
 
-            <h2>Data & Schema Design</h2>
-            <p>The hospital provided a structured dataset containing patient-level Emergency Room records. I structured this into a clean model to support the required questions.</p>
-            
-            <img src="healthcare 2.png" alt="Patient Data Structure" class="project-image">
-            <p class="caption">Snapshot of the patient-level ER records.</p>
-
-            <p>To ensure performance comparisons remained accurate without manual recalculation, I utilized a star schema approach with dedicated measure tables.</p>
-
-            <img src="healthcare.png" alt="Healthcare Star Schema" class="project-image">
-            <p class="caption">The Data Model designed for filter-safe calculations.</p>
-
-            <h2>KPI Design & DAX Logic</h2>
-            <p>The core value of this project was the translation of operational requirements into DAX logic.</p>
-
-            <div class="kpi-card">
-                <span class="kpi-title">1. Total Patient Volume</span>
-                <div class="kpi-purpose"><strong>Purpose:</strong> Establish baseline demand to track load over time and normalize other KPIs.</div>
-                <div class="kpi-purpose"><strong>Approach:</strong> Distinct count of patient identifiers to prevent double-counting across dimensions.</div>
-            </div>
-
-            <div class="kpi-card">
-                <span class="kpi-title">2. Average Wait Time</span>
-                <div class="kpi-purpose"><strong>Purpose:</strong> Monitor access efficiency and identify periods of operational strain.</div>
-                <div class="kpi-purpose"><strong>Approach:</strong> Calculated as a true average (minutes), separated from threshold logic to allow independent trend analysis.</div>
-            </div>
-
-            <div class="kpi-card">
-                <span class="kpi-title">3. Referral Rate</span>
-                <div class="kpi-purpose"><strong>Purpose:</strong> Understand downstream care demand and ER dependency on other departments.</div>
-                <div class="kpi-purpose"><strong>Approach:</strong> Filter-aware conditional row counts to reflect true referral behavior by period.</div>
-            </div>
-
-            <div class="kpi-card" style="border-left-color: #e74c3c;">
-                <span class="kpi-title">4. Wait Time Status (Compliance Target)</span>
-                <div class="kpi-purpose"><strong>Purpose:</strong> The hospital explicitly requested visibility into 30-minute access compliance.</div>
-                <div class="kpi-purpose"><strong>Approach:</strong> Conditional logic to classify patients as "Within Target" vs "Missed Target." This revealed failure rates that average wait times often hid.</div>
-            </div>
-
-            <h2>Outcome & Impact</h2>
-            <p>The final dashboard provided hospital stakeholders with a reliable, filter-safe KPI foundation. By moving beyond static reporting to decision-grade analytics, leadership gained:</p>
-            <ul>
-                <li>Clear visibility into Emergency Room access and throughput performance.</li>
-                <li>The ability to compare month-level behavior against consolidated averages to spot volatility.</li>
-                <li>A BI asset suitable for ongoing operational monitoring and executive review.</li>
-            </ul>
-
+        <div class="figure-container">
+            <img src="ecommerces 2.png" alt="Raw Data Table" class="project-image">
+            <div class="caption">Figure 1: Raw transactional data structure prior to modeling.</div>
         </div>
+
+        <p>The schema design prioritizes a "Metric System First" approach. I constructed a reusable DAX KPI layer to ensure that time-based calculations such as Year-to-Date (YTD) and Prior-Year-to-Date (PYTD) remain consistent regardless of the slicer state. This prevents common reporting errors where definitions conflict across different business units.</p>
+
+        <div class="figure-container">
+            <img src="ecommerces.png" alt="Star Schema Model" class="project-image">
+            <div class="caption">Figure 2: Star Schema connecting the Calendar Dimension to Sales Transactions.</div>
+        </div>
+
+        <h2>3. Technical Specifications (DAX)</h2>
+        <p>The following section details the logic used to derive the core performance indicators. These measures were developed to support dynamic time-intelligence comparison.</p>
+
+        <div class="tech-spec">
+            <h3>3.1 Sales Volume Logic</h3>
+            <p>The YTD Sales metric calculates the running total of sales for the current fiscal year. The PYTD Sales metric calculates the same figure for the exact corresponding period in the previous year to ensure a like-for-like comparison.</p>
+            
+            <span class="code-snippet">TOTALYTD(SUM('Ecommerce Data'[sales_per_order]), 'Calendar Table'[Date])</span>
+            <span class="code-snippet">CALCULATE(SUM('Ecommerce Data'[sales_per_order]), DATESYTD(DATEADD('Calendar Table'[Date], -1, YEAR)))</span>
+            <span class="code-snippet">YoY % Change = ([YTD Sales] - [PYTD Sales]) / [PYTD Sales]</span>
+        </div>
+
+        <div class="tech-spec">
+            <h3>3.2 Profitability Indicators</h3>
+            <p>Profit metrics follow the same time-intelligence pattern but include dynamic conditional logic for visualization. An icon generator was implemented to return a specific Unicode character (Up or Down triangle) based on the polarity of the Year-over-Year change.</p>
+            
+            <span class="code-snippet">VAR positive_icon = UNICHAR(9650)</span>
+            <span class="code-snippet">VAR negative_icon = UNICHAR(9660)</span>
+            <span class="code-snippet">RETURN IF([YoY Profit] > 0, positive_icon, negative_icon)</span>
+        </div>
+
+        <div class="tech-spec">
+            <h3>3.3 Margin Analysis</h3>
+            <p>Profit Margin is calculated at the aggregate level to avoid average-of-averages errors. The formula divides total profit by total sales before applying time filters.</p>
+            
+            <span class="code-snippet">SUM('Ecommerce Data'[profit_per_order]) / SUM('Ecommerce Data'[sales_per_order])</span>
+        </div>
+
+        <h2>4. Analytical Scope & Capabilities</h2>
+        <p>The dashboard architecture was designed to answer specific strategic questions without requiring manual data manipulation. It enables Executive Leadership to assess whether sales, profit, and margins are improving or deteriorating relative to the prior year. It allows Segment Managers to determine which customer types (Consumer, Corporate, or Home Office) are accountable for overall results. Furthermore, it empowers Category Managers to identify concentration risks where a single product category may be masking broader performance issues.</p>
+        <p>This implementation successfully transitioned the client from static, ad-hoc reporting to a dynamic decision-support system.</p>
+
     </div>
 
 </body>
