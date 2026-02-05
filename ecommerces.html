@@ -80,12 +80,20 @@
             <li>Which regions contribute the largest share of sales, and does the mix shift by segment?</li>
         </ul>
 
+        <h2>2. Technical Implementation & Solution Strategy</h2>
+        <p>To answer these questions, I designed a solution focused on a "Metric System First" approach. This ensured that regardless of how a user sliced the data (by region, shipping mode, or segment), the core logic for "Year-over-Year" comparisons remained accurate.</p>
+
         <h3>2.1 Data Architecture</h3>
         <p>The solution was built on a transactional dataset of 115,746 rows. I transformed the raw data into a Star Schema, creating a dedicated Calendar Dimension to support time-intelligence functions.</p>
 
         <div class="figure-container">
+            <img src="ecommerces 2.png" alt="Raw Data Table" class="project-image">
+            <div class="caption">Figure 1: Snapshot of the raw transactional dataset.</div>
+        </div>
+
+        <div class="figure-container">
             <img src="ecommerces.png" alt="Star Schema Model" class="project-image">
-            <div class="caption">Figure 1: The Star Schema Model connecting Transactions to Dimensions.</div>
+            <div class="caption">Figure 2: The Star Schema Model connecting Transactions to Dimensions.</div>
         </div>
 
         <h3>2.2 Metric System Development (DAX)</h3>
