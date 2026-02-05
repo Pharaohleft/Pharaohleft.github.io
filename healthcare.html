@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Sales Performance - BI Report</title> 
+    <title>Hospital Emergency Performance - BI Report</title> 
     <style>
         /* REPORT STYLING */
         body { font-family: 'Georgia', 'Times New Roman', serif; background-color: #f5f5f5; margin: 0; padding: 40px; line-height: 1.8; color: #333; }
@@ -28,7 +28,9 @@
         .project-image { width: 100%; max-width: 100%; border: 1px solid #ccc; padding: 5px; }
         .caption { font-size: 0.85em; color: #666; margin-top: 10px; font-style: italic; font-family: 'Segoe UI', Arial, sans-serif; }
 
-        /* TECHNICAL BLOCKS */
+        /* LISTS & TECHNICAL BLOCKS */
+        ul { margin-bottom: 20px; }
+        li { margin-bottom: 10px; }
         .tech-spec { background: #f9f9f9; padding: 25px; border-left: 5px solid #004085; margin: 20px 0; font-family: 'Segoe UI', Arial, sans-serif; }
         .code-snippet { font-family: 'Consolas', monospace; font-size: 0.85em; background: #fff; padding: 10px; border: 1px solid #e1e1e1; display: block; margin-top: 10px; color: #d63031; }
 
@@ -42,67 +44,73 @@
 
     <div class="report-container">
         
-        <h1>E-Commerce Sales Performance Report</h1>
+        <h1>Hospital Emergency Department Dashboard</h1>
         <p><strong>Role:</strong> Business Intelligence Developer (Contract)<br>
-        <strong>Subject:</strong> Profitability & Trend Analysis Implementation</p>
+        <strong>Subject:</strong> Operations, Access, and Throughput Analysis</p>
 
         <div class="iframe-container">
-            <iframe title="E-Commerce Sales" 
-                    src="https://app.powerbi.com/view?r=eyJrIjoiYjZkOWNlNjgtNjU4OS00MWExLTg2NDctMjYyNWZmNTkxMjViIiwidCI6IjJjMzI3YWU2LTBkMGItNDI0MS05YmE1LWRkMTgxMzE4NWI0ZiJ9" 
+            <iframe title="Healthcare Dashboard" 
+                    src="https://app.powerbi.com/view?r=eyJrIjoiZmVkMThjYWEtY2U3OS00NTRiLWIzNTItOWI2NmMyNjE5YzZmIiwidCI6IjJjMzI3YWU2LTBkMGItNDI0MS05YmE1LWRkMTgxMzE4NWI0ZiJ9" 
                     allowFullScreen="true">
             </iframe>
         </div>
 
-        <h2>1. Executive Summary & Project Context</h2>
-        <p>The ecommerce leadership team commissioned the development of a centralized Power BI dashboard to standardize performance reporting. The primary operational challenge was not a lack of data, but the absence of a repeatable system for answering critical business questions. The organization required a solution to definitively determine if year-to-date performance was trending positively against prior years, isolate whether variances were driven by sales volume or profitability, and identify the specific customer segments driving these results.</p>
-        <p>The finalized solution provides an executive-facing view that maintains consistency across Customer Segments while supporting granular drill-downs into Category, Product, Geography, and Shipping dimensions.</p>
+        <h2>1. Business Objectives & Operational Requirements</h2>
+        <p>The hospital administration engaged me on a contract basis to develop a performance monitoring system for the Emergency Room. The objective was to allow leadership to monitor access, throughput, admissions, referrals, and patient experience across varying timeframes.</p>
+        
+        <p><strong>The dashboard was required to answer the following operational questions:</strong></p>
+        
+        <ul>
+            <li>How many patients are being treated over time, and how does volume change month to month?</li>
+            <li>What is the average patient wait time, and does it remain within acceptable thresholds?</li>
+            <li>How effectively is the Emergency Room meeting its 30-minute access target?</li>
+            <li>What share of patients are being referred to other departments (identifying downstream bottlenecks)?</li>
+            <li>How do performance metrics behave when viewed monthly versus in aggregate?</li>
+        </ul>
 
-        <h2>2. Data Architecture & Modeling</h2>
-        <p>The analysis is built upon a transactional dataset containing 115,746 rows and 39 columns. Key data points include Order Date, Sales, Profit Per Order, Order Quantity, Customer Segment, and Geography. To support time-intelligence functions, a dedicated Calendar Dimension was modeled and related to the transactional fact table.</p>
+        <h2>2. Technical Implementation & Solution Strategy</h2>
+        <p>The primary technical requirement was to design robust, reusable KPIs using DAX that would remain accurate under different time filters (monthly views vs. consolidated views) without data duplication.</p>
+
+        <h3>2.1 Data Architecture</h3>
+        <p>The hospital provided a structured dataset containing patient-level Emergency Room records. I structured this into a clean model to support the required questions.</p>
 
         <div class="figure-container">
-            <img src="ecommerces 2.png" alt="Raw Data Table" class="project-image">
-            <div class="caption">Figure 1: Raw transactional data structure prior to modeling.</div>
+            <img src="healthcare 2.png" alt="Patient Data Structure" class="project-image">
+            <div class="caption">Figure 1: Snapshot of the patient-level ER records.</div>
         </div>
 
-        <p>The schema design prioritizes a "Metric System First" approach. I constructed a reusable DAX KPI layer to ensure that time-based calculations such as Year-to-Date (YTD) and Prior-Year-to-Date (PYTD) remain consistent regardless of the slicer state. This prevents common reporting errors where definitions conflict across different business units.</p>
+        <p>To ensure performance comparisons remained accurate without manual recalculation, I utilized a star schema approach with dedicated measure tables.</p>
 
         <div class="figure-container">
-            <img src="ecommerces.png" alt="Star Schema Model" class="project-image">
-            <div class="caption">Figure 2: Star Schema connecting the Calendar Dimension to Sales Transactions.</div>
+            <img src="healthcare.png" alt="Healthcare Star Schema" class="project-image">
+            <div class="caption">Figure 2: The Data Model designed for filter-safe calculations.</div>
         </div>
 
-        <h2>3. Technical Specifications (DAX)</h2>
-        <p>The following section details the logic used to derive the core performance indicators. These measures were developed to support dynamic time-intelligence comparison.</p>
+        <h3>2.2 KPI Design & DAX Logic</h3>
+        <p>The core value of this project was the translation of operational requirements into DAX logic. I implemented the following measures to ensure consistent reporting:</p>
 
         <div class="tech-spec">
-            <h3>3.1 Sales Volume Logic</h3>
-            <p>The YTD Sales metric calculates the running total of sales for the current fiscal year. The PYTD Sales metric calculates the same figure for the exact corresponding period in the previous year to ensure a like-for-like comparison.</p>
-            
-            <span class="code-snippet">TOTALYTD(SUM('Ecommerce Data'[sales_per_order]), 'Calendar Table'[Date])</span>
-            <span class="code-snippet">CALCULATE(SUM('Ecommerce Data'[sales_per_order]), DATESYTD(DATEADD('Calendar Table'[Date], -1, YEAR)))</span>
-            <span class="code-snippet">YoY % Change = ([YTD Sales] - [PYTD Sales]) / [PYTD Sales]</span>
+            <strong>Total Patient Volume (Baseline Demand):</strong><br>
+            Implemented as a distinct count of patient identifiers. This ensures accurate patient volume under all slicers and prevents double-counting when records span multiple dimensions.
         </div>
 
         <div class="tech-spec">
-            <h3>3.2 Profitability Indicators</h3>
-            <p>Profit metrics follow the same time-intelligence pattern but include dynamic conditional logic for visualization. An icon generator was implemented to return a specific Unicode character (Up or Down triangle) based on the polarity of the Year-over-Year change.</p>
-            
-            <span class="code-snippet">VAR positive_icon = UNICHAR(9650)</span>
-            <span class="code-snippet">VAR negative_icon = UNICHAR(9660)</span>
-            <span class="code-snippet">RETURN IF([YoY Profit] > 0, positive_icon, negative_icon)</span>
+            <strong>Average Wait Time (Efficiency):</strong><br>
+            Calculated as a true average of patient wait times (in minutes). This measure was intentionally separated from threshold logic to allow for independent analysis of wait time trends regardless of targets.
         </div>
 
         <div class="tech-spec">
-            <h3>3.3 Margin Analysis</h3>
-            <p>Profit Margin is calculated at the aggregate level to avoid average-of-averages errors. The formula divides total profit by total sales before applying time filters.</p>
-            
-            <span class="code-snippet">SUM('Ecommerce Data'[profit_per_order]) / SUM('Ecommerce Data'[sales_per_order])</span>
+            <strong>Referral Rate (Flow Dependencies):</strong><br>
+            Calculated using conditional row counts. This KPI is filter-aware to reflect true referral behavior by period, enabling comparison of referral intensity across months to identify external bottlenecks.
         </div>
 
-        <h2>4. Analytical Scope & Capabilities</h2>
-        <p>The dashboard architecture was designed to answer specific strategic questions without requiring manual data manipulation. It enables Executive Leadership to assess whether sales, profit, and margins are improving or deteriorating relative to the prior year. It allows Segment Managers to determine which customer types (Consumer, Corporate, or Home Office) are accountable for overall results. Furthermore, it empowers Category Managers to identify concentration risks where a single product category may be masking broader performance issues.</p>
-        <p>This implementation successfully transitioned the client from static, ad-hoc reporting to a dynamic decision-support system.</p>
+        <div class="tech-spec">
+            <strong>Wait Time Status (Target Compliance):</strong><br>
+            The hospital explicitly requested visibility into 30-minute access compliance. I implemented conditional logic to classify patient wait times, differentiating between "Within Target" and "Missed Target" populations. This metric revealed operational failure rates that were previously hidden by simple averages.
+        </div>
+
+        <h3>2.3 Outcome</h3>
+        <p>The final dashboard provided hospital stakeholders with a reliable, filter-safe KPI foundation. By moving beyond static reporting to decision-grade analytics, leadership gained the ability to compare month-level behavior against consolidated averages, allowing them to identify when apparent stability was masking underlying volatility.</p>
 
     </div>
 
